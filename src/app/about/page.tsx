@@ -7,7 +7,7 @@ import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 const AboutUsPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-gray-200 text-black">
+    <div className="min-h-screen bg-gradient-to-br from-gray-400 via-white to-gray-500 text-black">
       <Navbar />
 
       {/* Hero Section */}
@@ -22,7 +22,7 @@ const AboutUsPage = () => {
               HelperBuddy offers professional house, office, and AC cleaning services across India. Our team ensures your spaces are spotless, fresh, and well-maintained.
             </p>
             <Link
-              href="/services"
+              href="/"
               className="bg-gray-900 text-white px-6 py-3 rounded-lg inline-block mt-6 hover:bg-gray-700 transition-colors duration-300"
             >
               Explore Our Services

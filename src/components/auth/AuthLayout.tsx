@@ -2,7 +2,7 @@
 
 import { Button } from "@/src/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
+import Link from "next/link";
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
@@ -31,7 +31,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
               variant="secondary"
               className="bg-white/20 hover:bg-white/40 text-white backdrop-blur-sm"
             >
-              <span className="text-black font-semibold">Back to website</span>
+              <Link href="/" className="text-black font-semibold">Back to website</Link>
               <ArrowRight className="ml-2 h-4 w-4 text-black font-semibold" />
             </Button>
           </div>
