@@ -11,7 +11,7 @@ export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <>
+    <div className="bg-black">
       <h1 className="text-4xl font-semibold text-white mb-2">Welcome back</h1>
       <p className="text-zinc-400 mb-8">
         New to Helper Buddy?{" "}
@@ -88,6 +88,6 @@ export function LoginForm() {
           </Button>
         </div>
       </form>
-    </>
+    </div>
   );
 }

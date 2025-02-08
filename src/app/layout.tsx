@@ -1,28 +1,24 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { CartProvider } from "@/src/context/CartContext";
-import Navbar from "@/src/components/ui/Navbar";
-
+import ClientLayout from "@/src/components/ClientLayout"; // Import the client layout
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 export const metadata: Metadata = {
   title: "Helper Buddy",
   description: "",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={`${inter.className} flex`}>
-        <CartProvider>
-          <div className="flex-1">
-            <Navbar />
-            {children}
-          </div>
-        </CartProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

@@ -3,15 +3,16 @@
 import { Button } from "@/src/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
 
 export function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen bg-[#1a0833] flex items-center justify-center p-8">
-      {/* Main Container */}
-      <div className="w-full max-w-[90rem] bg-zinc-900 rounded-2xl shadow-[0_4px_80px_0_rgba(0,0,0,0.9)] overflow-hidden flex min-h-[40rem]">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-8">
+      {/* Main Container with enhanced shadow */}
+      <div className="w-full max-w-[90rem] bg-black rounded-2xl shadow-[0px_8px_100px_rgba(0,0,0,0.6)] overflow-hidden flex min-h-[40rem] transition-shadow duration-300 ease-in-out hover:shadow-[0px_10px_120px_rgba(0,0,0,0.7)]">
         {/* Left side - Image Section */}
         <div className="hidden lg:flex lg:w-1/2 relative p-6">
           <div className="relative w-full h-full rounded-xl overflow-hidden">
@@ -20,21 +21,22 @@ export function AuthLayout({ children }: AuthLayoutProps) {
               alt="Desert at night"
               className="object-cover w-full h-full rounded-xl"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent rounded-xl" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent rounded-xl" />
           </div>
           {/* Logo and Back button */}
           <div className="absolute top-12 left-12 right-12 flex justify-between items-center">
             <div className="text-white text-2xl font-bold">
-              Helper <span className="text-black">Buddy</span>
+              Helper <span className="text-gray-900">Buddy</span>
             </div>
             <Button
               variant="secondary"
-              className="bg-white/20 hover:bg-white/40 text-white backdrop-blur-sm"
+              className="bg-black/20 hover:bg-black/40 text-white backdrop-blur-sm"
             >
-              <Link href="/" className="text-black font-semibold">Back to website</Link>
-              <ArrowRight className="ml-2 h-4 w-4 text-black font-semibold" />
+              <Link href="/" className="text-white ">Back to website</Link>
+              <ArrowRight className="ml-2 h-4 w-4 text-white font-semibold" />
             </Button>
           </div>
+          {/* Motivational Text */}
           <div className="absolute bottom-24 left-12 right-12">
             <h2 className="text-white text-4xl font-semibold leading-tight">
               Reliable, Fast & Affordable Services <br /> Your Helper Buddy is Just
@@ -43,7 +45,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
           </div>
         </div>
         {/* Right side - Form Section */}
-        <div className="w-full lg:w-1/2 p-8 sm:p-12 xl:p-16 flex flex-col justify-center bg-zinc-950">
+        <div className="w-full lg:w-1/2 p-8 sm:p-12 xl:p-16 flex flex-col justify-center bg-black">
           <div className="max-w-[420px] mx-auto w-full">{children}</div>
         </div>
       </div>

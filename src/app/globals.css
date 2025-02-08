@@ -81,11 +81,34 @@
   }
 }
 /* Apply the custom cursor to the whole page */
-* {
-  cursor: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 14 14%22%3E%3Ccircle cx=%227%22 cy=%227%22 r=%225%22 stroke=%22black%22 stroke-width=%222%22 fill=%22white%22 /%3E%3C/svg%3E'), auto;
+html {
+  cursor: none; /* Hide the default cursor */
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(72, 71, 71, 0.594);
+  border-radius: 50%;
+  z-index: 100;
   
 }
 
+.cursor-ring {
+  width: 15px;
+  height: 15px;
+  background-color: rgb(190, 153, 250); /* Pale yellow */
+  border-radius: 50%;
+  transition: transform 0.15s ease-out;
+  z-index: 100;
+}
 
 
 

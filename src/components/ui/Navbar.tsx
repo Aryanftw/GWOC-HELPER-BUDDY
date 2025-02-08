@@ -40,15 +40,15 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-6 items-center">
-          <Link
-                key="Home"
-                href='/'
-                className="text-white font-medium hover:text-gray-400 transition-colors duration-300 relative group"
-              >
-                Home
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            {[ "About", "Contact", "Blog"].map((item) => (
+            <Link
+              key="Home"
+              href="/"
+              className="text-white font-medium hover:text-gray-400 transition-colors duration-300 relative group"
+            >
+              Home
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            {["Blog"].map((item) => (
               <Link
                 key={item}
                 href={`/${item.toLowerCase()}`}
@@ -58,6 +58,22 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
+
+            <button
+              onClick={() => scrollToSection("about")}
+              className="text-white font-medium hover:text-gray-400 transition-colors duration-300 relative group"
+            >
+              About
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </button>
+
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="text-white font-medium hover:text-gray-400 transition-colors duration-300 relative group"
+            >
+              Contact
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </button>
 
             {/* Services Button with Smooth Scroll */}
             <button

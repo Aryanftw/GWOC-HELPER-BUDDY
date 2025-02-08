@@ -5,11 +5,14 @@ import { Button } from "@/src/components/ui/button";
 import Navbar from "@/src/components/ui/Navbar";
 import { useCart } from "@/src/context/CartContext";
 import { DM_Sans, Playfair_Display } from "next/font/google";
+import Link from "next/link";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });
-const playfair = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] });
-
-import Link from "next/link";
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+});
 
 export default function Home() {
   const { addToCart } = useCart();
@@ -42,7 +45,11 @@ export default function Home() {
           <div className="mt-6 flex space-x-4">
             <Button
               className="bg-black text-white px-6 py-3 rounded-lg transition-all duration-300 ease-in-out hover:bg-gray-800 hover:scale-105"
-              onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() =>
+                document
+                  .getElementById("services")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               Our Services
             </Button>
@@ -56,25 +63,36 @@ export default function Home() {
         </div>
 
         {/* Image */}
-        <div className="relative w-full md:w-1/2">
+        <div className="relative w-full md:w-1/2 flex justify-end">
           <Image
             src="https://images.squarespace-cdn.com/content/v1/576994f5c534a5457e4c0e9b/1602133687259-SMK5R6CDQC5BQO9A82WJ/Anahita+Shishir-0089.jpg?format=1000w"
             alt="Interior Design"
             width={500}
             height={500}
-            className="rounded-lg shadow-2xl bg-black absolute right-0 md:right-[-50px] opacity-90 transition-transform duration-300 ease-in-out hover:scale-105"
+            className="rounded-lg shadow-2xl bg-black opacity-90 transition-transform duration-300 ease-in-out hover:scale-105"
           />
         </div>
       </section>
 
       {/* About Us Section */}
-      <section className="px-10 py-16">
-        <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 text-center transition-all duration-300 ease-in-out hover:bg-gray-50 hover:shadow-2xl">
-          <h3 className={`text-3xl font-bold text-gray-900 ${playfair.className}`}>About Helper Buddy</h3>
+      <section className="px-10 py-16" id="about">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 text-center transition-all duration-300 ease-in-out hover:bg-gray-50 hover:shadow-2xl"
+        >
+          <h3
+            className={`text-3xl font-bold text-gray-900 ${playfair.className}`}
+          >
+            About Helper Buddy
+          </h3>
           <p className={`text-gray-700 mt-4 text-lg ${dmSans.className}`}>
-            At Helper Buddy, we are committed to making home maintenance easier for you. 
-            Whether it's cleaning, repairs, or home improvement, our team of skilled professionals 
-            ensures top-notch service with just a click. Your comfort is our priority.
+            At Helper Buddy, we are committed to making home maintenance easier
+            for you. Whether it's cleaning, repairs, or home improvement, our
+            team of skilled professionals ensures top-notch service with just a
+            click. Your comfort is our priority.
           </p>
           <Link
             href="/about"
@@ -82,29 +100,41 @@ export default function Home() {
           >
             Learn More
           </Link>
-        </div>
+        </motion.div>
       </section>
 
       {/* Services Section */}
       <section id="services" className="px-10 py-20">
-        <h3 className={`text-4xl font-bold text-gray-900 mb-10 text-center ${playfair.className}`}>
+        <h3
+          className={`text-4xl font-bold text-gray-900 mb-10 text-center ${playfair.className}`}
+        >
           Our Services
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-          {services.map((service) => (
-            <div
+          {services.map((service, index) => (
+            <motion.div
               key={service.id}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }} // Alternating direction
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true }}
               className="bg-gray-100 shadow-lg p-6 rounded-lg text-center transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
             >
-              <h4 className={`text-2xl font-semibold text-gray-900 ${playfair.className}`}>{service.name}</h4>
-              <p className={`text-gray-700 mt-2 text-lg ${dmSans.className}`}>${service.price}</p>
+              <h4
+                className={`text-2xl font-semibold text-gray-900 ${playfair.className}`}
+              >
+                {service.name}
+              </h4>
+              <p className={`text-gray-700 mt-2 text-lg ${dmSans.className}`}>
+                ${service.price}
+              </p>
               <button
                 onClick={() => addToCart(service)}
                 className="mt-6 bg-black text-white px-6 py-3 rounded transition-all duration-300 ease-in-out hover:bg-gray-800 hover:scale-105"
               >
                 Add to Cart
               </button>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -116,6 +146,40 @@ export default function Home() {
           >
             More Services
           </Link>
+        </div>
+      </section>
+
+      <section id="contact" className="px-10 py-20 bg-black text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className={`text-4xl font-bold ${playfair.className}`}>
+            Contact Us
+          </h3>
+          <p className={`mt-4 text-lg text-gray-300 ${dmSans.className}`}>
+            Have any questions or need assistance? Reach out to us!
+          </p>
+          <form className="mt-8 space-y-6">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="w-full px-4 py-3 bg-gray-900 text-white border border-gray-700 rounded-md focus:outline-none focus:border-white transition-all duration-300 ease-in-out"
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="w-full px-4 py-3 bg-gray-900 text-white border border-gray-700 rounded-md focus:outline-none focus:border-white transition-all duration-300 ease-in-out"
+            />
+            <textarea
+              placeholder="Your Message"
+              className="w-full px-4 py-3 bg-gray-900 text-white border border-gray-700 rounded-md focus:outline-none focus:border-white transition-all duration-300 ease-in-out"
+              rows={4}
+            ></textarea>
+            <button
+              type="submit"
+              className="w-full bg-white text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-105"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </section>
     </main>

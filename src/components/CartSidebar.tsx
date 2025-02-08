@@ -9,7 +9,7 @@ const CartSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
   return (
     <div
       className={`fixed top-0 right-0 h-full w-80 md:w-96 bg-gradient-to-b from-gray-900 to-black text-white shadow-lg border-l border-gray-700 
-      transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+      transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"} z-50`}
     >
       {/* Close Button */}
       <button
