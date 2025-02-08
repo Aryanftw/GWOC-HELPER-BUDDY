@@ -90,25 +90,20 @@ html {
   position: fixed;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  border-radius: 50%;
+  z-index: 100;
 }
 
 .cursor-dot {
   width: 8px;
   height: 8px;
   background-color: rgba(72, 71, 71, 0.594);
-  border-radius: 50%;
-  z-index: 100;
-  
 }
 
 .cursor-ring {
   width: 15px;
   height: 15px;
-  background-color: rgb(190, 153, 250); /* Pale yellow */
-  border-radius: 50%;
+  background-color: rgba(115, 88, 158, 0.6); /* Semi-transparent purple */
   transition: transform 0.15s ease-out;
-  z-index: 100;
+  mix-blend-mode: difference; 
 }
-
-
-

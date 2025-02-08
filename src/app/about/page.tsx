@@ -141,7 +141,11 @@ const AboutUsPage = () => {
         <h2 className={`text-3xl font-bold text-gray-800 mb-6 ${playfair.className}`}>
           Follow Us
         </h2>
-        <div className="flex justify-center space-x-6">
+        <motion.div
+          className="flex justify-center space-x-6"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
           {[
             ["Facebook", "https://www.facebook.com"],
             ["Instagram", "https://www.instagram.com"],
@@ -164,8 +168,8 @@ const AboutUsPage = () => {
               </motion.a>
             );
           })}
-        </div>
-      </motion.div>
+        </motion.div>
+        </motion.div>
     </div>
   );
 };
