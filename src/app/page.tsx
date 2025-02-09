@@ -126,7 +126,7 @@ export default function Home() {
                 {service.name}
               </h4>
               <p className={`text-gray-700 mt-2 text-lg ${dmSans.className}`}>
-                ${service.price}
+              ₹{service.price}
               </p>
               <button
                 onClick={() => addToCart(service)}

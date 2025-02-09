@@ -2,6 +2,7 @@
 
 import { useCart } from "@/src/context/CartContext";
 import { X } from "lucide-react";
+import Link from "next/link";
 
 const CartSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const { cart, removeFromCart } = useCart();
@@ -27,7 +28,7 @@ const CartSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
         {cart.length === 0 ? (
           <p className="text-gray-400">Your cart is empty</p>
         ) : (
-          <ul className="space-y-4">
+          <ul className="space-y-4 mb-6">
             {cart.map((item) => (
               <li
                 key={item.id}
@@ -44,6 +45,19 @@ const CartSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
             ))}
           </ul>
         )}
+
+        {/* Proceed to Pay Button */}
+        <Link
+          href="/payment"
+          className={`mt-auto text-center text-white py-3 rounded-lg transition duration-300 ${
+            cart.length > 0
+              ? "bg-gradient-to-r from-green-500 to-green-700 hover:opacity-80"
+              : "bg-gray-600 cursor-not-allowed opacity-50"
+          }`}
+          onClick={(e) => cart.length === 0 && e.preventDefault()}
+        >
+          Checkout Page
+        </Link>
       </div>
     </div>
   );
